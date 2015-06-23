@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="eng" ng-app="wordPressApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>worldPress</title>
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-fontawesome/dist/angular-fontawesome.min.js"></script>
+        <script src="bower_components/lodash/dist/lodash.js"></script>
+        <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+
+        <script src="app.js"></script>
+        <script src="js/service.js"></script>
+        <script src="js/controller.js"></script>
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/home">WordPress</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="NavBarCtrl">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: isActive('#/home')}"><a href="#/home">Articles<span class="sr-only">(current)</span></a></li>
+                    <li ng-class="{ active: isActive('/all_press')}"><a href="#/all_press">Press</a></li>
+                    <li ng-class="{ active: isActive('/add_article')}"><a href="#/add_article">Add Article</a></li>
+                    <li ng-class="{ active: isActive('/add_press')}"><a href="#/add_press">add Press</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-class="{ active: isActive('/registration')}" ng-show="!signIn"><a href="#/registration">Registration</a></li>
+                    <li ng-class="{ active: isActive('/sign_in')}" ng-show="!signIn"><a href="#/login">Sign In</a></li>
+                    <li ng-class="{ active: isActive('/sign_in')}" ng-show="signIn"><a href="#/home">Hi {{signIn}}!</a></li>
+                    <li ng-class="{ active: isActive('/log_out')}" ng-show="signIn" ng-click="logout()"><a href="#/home">Log Out</a></li>
+                    <li class="dropdown">
+                        <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Select Press <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="item in press.articles"><a href="#/home/{{item.id}}">{{item.title}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div ng-view></div>
+
+    </body>
+</html>

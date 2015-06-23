@@ -1,0 +1,16 @@
+<div class="container" ng-controller="loginCtrl">
+
+    <form class="form-signin">
+        <h1 class="form-signin-heading text-muted">Sign In</h1>
+        <input type="text" name="email" ng-model="data.email" class="form-control" placeholder="Email address" required="" autofocus="">
+        <input type="password" name="data.password" ng-model="data.password" class="form-control" placeholder="Password" required="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="submitData(data)">
+            Sign In
+        </button>
+    </form>
+    <div class="alert-container">
+        <div class="alert alert-success text-center" data-ng-show="success" role="alert">{{success}}</div>
+        <div class="alert alert-warning text-center" data-ng-show="error" role="alert">{{error}}</div>
+    </div>
+    {{all}}
+</div>

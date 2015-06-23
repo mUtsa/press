@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Add new Press in database</h2>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="title">Press:</label>
+            <div class="col-sm-6">
+                <input type="text" name="title" ng-model="data.title" class="form-control" id="title" placeholder="Enter Press">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="desc">Description:</label>
+            <div class="col-sm-6">
+                <input type="text" name="desc" ng-model="data.desc" class="form-control" id="desc" placeholder="Enter office">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" ng-click="submitData()" class="btn btn-default">Submit</button>
+            </div>
+            <div class="col-sm-offset-2 col-sm-5 addMarker">
+                <button type="submit" ng-click="addMarker()" class="btn btn-default">Add Office</button>
+            </div>
+        </div>
+
+        <div id="map_canvas">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                <ui-gmap-marker data-ng-repeat="marker in markerList" coords="marker.coordsObj" options="marker.options" events="marker.events" idkey="marker.key">
+
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div>
+
+        <div class="alert-container">
+            <div class="alert alert-success text-center" data-ng-show="success" role="alert">{{success}}</div>
+            <div class="alert alert-warning text-center" data-ng-show="error" role="alert">{{error}}</div>
+        </div>
+    </form>
+</div>

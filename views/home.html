@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row" ng-repeat="item in all.articles">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="subnail">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" ng-click="go('/edit_article/' + item.id)">Edit</button>
+                <button type="button" class="btn btn-default" ng-click="delete(item.id)">Delete</button>
+            </div>
+        </div>
+        <div class="artCol">
+            <p>{{item.title_press}}</p>
+            <p>{{item.title}}</p>
+            <p>{{item.text}}</p>
+            <p>Date: {{item.data}}</p>
+        </div>
+
+            <div class="hor_line"></div>
+        </div>
+    </div>
+    <div class="pagin">
+        <pagination total-items="totalItems" items-per-page="3" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+    </div>
+</div>
